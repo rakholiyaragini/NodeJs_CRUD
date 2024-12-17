@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Record</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="mb-4">Edit Record</h1>
+    <form action="/update/<%= record._id %>" method="POST" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="name" 
+          name="name" 
+          value="<%= record.name %>" 
+          required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input 
+          type="email" 
+          class="form-control" 
+          id="email" 
+          name="email" 
+          value="<%= record.email %>" 
+          required>
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">Phone</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="phone" 
+          name="phone" 
+          value="<%= record.phone %>" 
+          required>
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload Image</label>
+        <input 
+          type="file" 
+          class="form-control" 
+          id="image" 
+          name="image">
+        <div class="mt-2">
+          <img src="<%= record.image %>" alt="Uploaded Image" style="max-width: 150px;">
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="status" class="form-label">Status</label>
+        <select class="form-select" id="status" name="status">
+          <option value="true" <%= record.status ? 'selected' : '' %>>Active</option>
+          <option value="false" <%= !record.status ? 'selected' : '' %>>Inactive</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="createdAt" class="form-label">Created Date</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="createdAt" 
+          value="<%= record.createdAt %>" 
+          readonly>
+      </div>
+      <button type="submit" class="btn btn-primary">Update</button>
+      <a href="/" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>
+</body>
+</html>
