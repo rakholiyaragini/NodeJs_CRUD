@@ -21,8 +21,6 @@ exports.getAllRecords = async (req, res) => {
         res.status(500).send("Server Error");
     }
 };
-
-// Add a new record
 exports.addRecord = async (req, res) => {
     try {
         const { name, email, phone } = req.body;
